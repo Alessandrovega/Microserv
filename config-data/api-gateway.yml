@@ -25,3 +25,9 @@ spring:
             lb://payment
           predicates:
             - Path=/payments/**
+        - id:
+            user
+          uri:
+            lb://user
+          predicates:
+            - Path=/users/**
