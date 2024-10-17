@@ -30,4 +30,4 @@ spring:
           uri:
             lb://user
           predicates:
-            - Path=/users/**
+            - Path=/api/v1/users/**
