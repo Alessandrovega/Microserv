@@ -1,4 +1,4 @@
-package com.backendtravelbox.product.shared;
+package com.backendtravelbox.cart.shared;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
@@ -10,7 +10,7 @@ public class OpenApiConfiguration {
     @Bean
     public OpenAPI platformOpenApi() {
         var openApi = new OpenAPI();
-        openApi.info(new Info().title("Backend Product").version("v1.0.0"));
+        openApi.info(new Info().title("Backend Cart").version("v1.0.0"));
         return openApi;
     }
 }
