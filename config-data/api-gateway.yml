@@ -20,11 +20,11 @@ spring:
           predicates:
             - Path=/api/v1/products/**
         - id:
-            payment
+            cart
           uri:
-            lb://payment
+            lb://cart
           predicates:
-            - Path=/payments/**
+            - Path=/api/v1/carts/**
         - id:
             user
           uri:
