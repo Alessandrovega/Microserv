@@ -47,4 +47,28 @@ public class PaymentController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(paymentCreated);
     }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Payment> update(@PathVariable("id") Long id, @RequestBody Payment payment) {
+        Payment updatedPayment = paymentService.update(id, payment);
+        if (updatedPayment == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(updatedPayment);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
+        Payment payment = paymentService.getById(id);
+        if (payment == null) {
+            return ResponseEntity.notFound().build();
+        }
+        paymentService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
+
+
+
+
 }

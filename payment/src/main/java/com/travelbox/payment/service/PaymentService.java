@@ -8,4 +8,6 @@ public interface PaymentService {
     List<Payment> getAll();
     Payment getById(Long paymentId);
     Payment create(Payment payment);
+    Payment update(Long paymentId, Payment payment);
+    void delete(Long paymentId);
 }

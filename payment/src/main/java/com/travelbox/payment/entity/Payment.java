@@ -14,6 +14,10 @@ public class Payment {
 
     private String name;
 
+    private String description;
+
+    private String title;
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
 }

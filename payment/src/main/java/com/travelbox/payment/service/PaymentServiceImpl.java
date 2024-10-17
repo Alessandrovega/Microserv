@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PaymentServiceImpl implements PaymentService {
@@ -30,5 +31,28 @@ public class PaymentServiceImpl implements PaymentService {
         payment.setCreated(new Date());
 
         return paymentRepository.save(payment);
+    }
+
+    @Override
+    public Payment update(Long paymentId, Payment payment) {
+        Optional<Payment> existingPayment = paymentRepository.findById(paymentId);
+
+        if (existingPayment.isPresent()) {
+            Payment paymentToUpdate = existingPayment.get();
+            paymentToUpdate.setName(payment.getName());
+            paymentToUpdate.setDescription(payment.getDescription());
+            paymentToUpdate.setTitle(payment.getTitle());
+            // Si es necesario actualizar la fecha de creación o algún otro campo
+            return paymentRepository.save(paymentToUpdate);
+        }
+
+        return null; // Manejar este caso en el controlador.
+    }
+
+    @Override
+    public void delete(Long paymentId) {
+        if (paymentRepository.existsById(paymentId)) {
+            paymentRepository.deleteById(paymentId);
+        }
     }
 }
